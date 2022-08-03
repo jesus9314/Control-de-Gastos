@@ -2,7 +2,7 @@ import { useState } from "react"
 import Msg from "./Msg";
 import CerrarBtn from "../img/cerrar.svg"
 
-const Modal = ({ setModal, animarModal, setAnimarModal }) => {
+const Modal = ({ setModal, animarModal, setAnimarModal,guardarGasto }) => {
 	const [nombre, setNombre] = useState("");
 	const [cantidad, setCantidad] = useState("");
     const [categoria,setCategoria] = useState("")
@@ -23,6 +23,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
                 setMsg('')
             },3000)
         }
+        guardarGasto({nombre,cantidad,categoria})
     }
 
 	return (
@@ -52,13 +53,13 @@ const Modal = ({ setModal, animarModal, setAnimarModal }) => {
                     value={categoria}
                     onChange={e => setCategoria(e.target.value)}>
 						<option value="">-- Seleccione --</option>
-						<option value="Ahorro">Ahorro</option>
-						<option value="comida">comida</option>
+						<option value="ahorro">Ahorro</option>
 						<option value="casa">casa</option>
-						<option value="gastos">gastos</option>
+						<option value="comida">comida</option>
+						<option value="ocio">gastos</option>
 						<option value="ocio">ocio</option>
-						<option value="salud">salud</option>
-						<option value="subscripciones">subscripciones</option>
+                        <option value="salud">salud</option>
+						<option value="suscripciones">subscripciones</option>
 					</select>
 				</div>
 				<input type="submit" value="Añadir Gasto" />
